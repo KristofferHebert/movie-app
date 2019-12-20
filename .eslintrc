@@ -1,0 +1,8 @@
+{
+  "extends": ["standard", "standard-jsx"],
+  "settings": {
+    "react": {
+      "version": "detect"  
+    }
+  }
+}

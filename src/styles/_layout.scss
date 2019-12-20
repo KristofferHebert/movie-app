@@ -1,0 +1,38 @@
+// CSS is written for mobile devices first
+
+// $mobile-width about 320px iPhone 5 width
+$mobile-width: 20rem;
+
+// $mobile-width about 368px iPhone 5 width
+$mobile-small-width: 23rem;
+
+// $tablet-width max of 768px width
+$mobile-large-width: 48rem;
+
+// $tablet-width max of 1024px iPad width
+$tablet-width: 64rem;
+
+// $desktop-width more than 1024px wide
+$desktop-width: 65rem;
+
+$break-points: (
+    small: $mobile-width,
+    smedium: $mobile-small-width,
+    medium: $mobile-large-width,
+    large:  $tablet-width,
+    xlarge: $desktop-width,
+);
+
+// Target specific breakpoints with this mixin
+// USAGE: 
+// @include above($tablet) {
+//  ...your css    
+// }
+
+@mixin above($break){
+    @if map-has-key($break-points, $break){
+        @media (min-width: map-get($break-points, $break)) {
+            @content;
+        }
+    }
+}

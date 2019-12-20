@@ -1,0 +1,76 @@
+// CSS is written for mobile devices first
+
+// $mobile-width about 320px iPhone 5 width
+$mobile-width: 20rem;
+
+// $tablet-width max of 768px width
+$mobile-large-width: 48rem;
+
+// $tablet-width max of 1024px iPad width
+$tablet-width: 64rem;
+
+// $desktop-width more than 1024px wide
+$desktop-width: 65rem;
+
+$break-points: (
+    small: $mobile-width,
+    medium: $mobile-large-width,
+    large:  $tablet-width,
+    xlarge: $desktop-width,
+);
+
+@mixin above($break){
+    @if map-has-key($break-points, $break){
+        @media (min-width: map-get($break-points, $break)) {
+            @content;
+        }
+    }
+}
+
+// Target specific breakpoints with this mixin
+// USAGE: 
+// @include above($tablet) {
+//  ...your css    
+// }
+
+.ma {
+    &_container {
+        // About 1200px at 16px font
+        max-width: 75rem;
+        margin: auto;
+    }
+    &_row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    &_column {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin: 0 0 0.5rem 0;
+        padding: 0.5em 10px;
+
+        &_col {
+
+            &--1{
+                flex-basis: 100%;
+                @include above(medium){
+                    flex-basis: 16.66%;
+                }
+            }
+            &--3{
+                flex-basis: 100%;
+                @include above(medium){
+                    flex-basis: 33.33%;
+                }
+            }
+            &--6{
+                flex-basis: 100%;
+                @include above(medium){
+                    flex-basis: 66.66%;
+                }
+            }
+        }
+    }
+}

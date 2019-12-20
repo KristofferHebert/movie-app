@@ -1,0 +1,105 @@
+@import 'reset';
+@import 'base';
+@import 'layout';
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  background-color: $bg-color;
+  line-height: 1.5rem;
+}
+
+.exercise-header {
+  padding: 2rem;
+  margin: 0;
+  text-align: center;
+  color: $white-color;
+  background-color: $teal-color;
+  
+  // Instructions said I couldn't modify the DOM
+  // Therefore I used CSS selectors
+  
+  &:first-of-type + div {
+    color: $text-color;
+    background-color: $bg-color;
+    padding: 2rem;
+
+    > div {
+      max-width: 51em;
+      margin: auto;
+
+      border-top: 1px solid $white-color;
+      padding-top: 1rem;
+      display: block;
+      
+      @include above(medium) { 
+        display: flex;
+      }
+
+      > div {
+        border-left: 2px solid $orange-color;
+        position: relative;
+        flex-basis: 100%;
+        flex: 1;
+      
+        @include above(medium) { 
+          flex-basis: 32rem;
+        }
+
+        &::before {
+          content: url('../img/quotation.png');
+          position: absolute;
+          left: -23px;
+          top: -15px;
+        }
+
+        &::after {
+          content: url('../img/dot.png');
+          width: 9px;
+          height: 9px;
+          position: absolute;
+          left: -6px;
+          bottom: 8px;
+        }
+
+      }
+    }
+    p, span {
+      padding: 1rem 2rem;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: .7rem;
+      @include above(smedium) { 
+        font-size: .9rem;
+      }
+    }
+
+    a {
+      border-radius: 3px 3px 3px 3px;
+      -moz-border-radius: 3px 3px 3px 3px;
+      -webkit-border-radius: 3px 3px 3px 3px;
+      color: $white-color;
+      text-align: center;
+      display: block;
+      background-color: $blue-color;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .7rem;
+      height: 4rem;
+      line-height: 4rem;
+      margin: 2rem 0;
+      flex-basis: 100%;
+      align-self: center;
+
+      @include above(medium) { 
+        flex-basis: 8rem;
+      }
+      @include above(xlarge) { 
+        flex-basis: 12rem;
+      }
+    }
+  }
+}
+
